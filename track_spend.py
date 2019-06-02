@@ -11,7 +11,7 @@ card = sys.argv[3]
 tag = sys.argv[4]
 memo = sys.argv[5]
 
-amount = float(re.search('[$].+\.\d\d', amount).group(0)[1:])
+amount = float(re.search('.+\.\d\d', amount).group(0)[1:])
 
 card_dict = {"2006": "AmEx Gold Card",
              "1003": "AmEx Gold Card",
