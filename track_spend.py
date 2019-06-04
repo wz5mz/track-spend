@@ -1,4 +1,4 @@
-#! /data/data/com.termux/files/usr/bin/env python3
+#!/data/data/com.termux/files/usr/bin/env python3
 
 from oauth2client.service_account import ServiceAccountCredentials
 import gspread
@@ -7,8 +7,8 @@ import re
 
 date = sys.argv[1]
 amount = sys.argv[2]
-card = sys.argv[3]
 tag = sys.argv[4]
+card = sys.argv[3]
 memo = sys.argv[5]
 
 amount = float(re.search('.+\.\d\d', amount).group(0)[1:])
@@ -16,7 +16,8 @@ amount = float(re.search('.+\.\d\d', amount).group(0)[1:])
 card_dict = {"2006": "AmEx Gold Card",
              "1003": "AmEx Gold Card",
              "1004": "AmEx Gold Card",
-             "0000": "Citi Double Cash credit"}
+             "0000": "Citi Double Cash credit",
+             "": "AmegyBank Amazing credit"}
 card = card_dict.get(re.search('\d\d\d\d', card).group(0))
 
 
