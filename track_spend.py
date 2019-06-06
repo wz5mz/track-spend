@@ -31,11 +31,11 @@ def track_spend(date, amount, card, tag, memo):
     gc = gspread.authorize(credentials)
     worksheet = gc.open('Wade Zhang\'s Spending from 2016-06-20.xlsx').worksheet('2016-11-17 to')
     last_row = len(worksheet.col_values(2)) + 1
-    cell_list = [gspread.models.Cell(last_row, 1, str(date)),
+    cell_list = [gspread.models.Cell(last_row, 1, date.strip()),
                  gspread.models.Cell(last_row, 2, amount),
                  gspread.models.Cell(last_row, 3, card),
-                 gspread.models.Cell(last_row, 4, tag),
-                 gspread.models.Cell(last_row, 5, memo)]
+                 gspread.models.Cell(last_row, 4, tag.strip()),
+                 gspread.models.Cell(last_row, 5, memo.strip())]
     worksheet.update_cells(cell_list)
 
 
