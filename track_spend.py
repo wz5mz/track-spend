@@ -19,6 +19,7 @@ card_dict = {"2006": "AmEx Gold Card",
              "1004": "AmEx Gold Card",
              "0000": "Citi Double Cash credit",
              "2169": "AmegyBank Amazing credit"}
+print(card)
 print(re.search('\d\d\d\d', card).group(0))
 card = card_dict.get(re.search('\d\d\d\d', card).group(0))
 
