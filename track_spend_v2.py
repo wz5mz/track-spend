@@ -7,6 +7,8 @@ import re
 
 date = sys.argv[1]
 antext = sys.argv[2]
+print(type(antext))
+print(antext)
 # card = sys.argv[3]
 tag = sys.argv[4]
 memo = sys.argv[5]
