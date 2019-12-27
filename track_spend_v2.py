@@ -14,7 +14,7 @@ tag = sys.argv[4]
 memo = sys.argv[5]
 tip = sys.argv[6]
 
-amount = float(re.search('\$.+\.\d\d', antext).group(0)[1:]) + float(tip)
+amount = -(float(re.search('\$.+\.\d\d', antext).group(0)[1:]) + float(tip))
 
 card_dict = {"8420": "Capital One Quicksilver",
              "1311": "Capital One Savor credit",
