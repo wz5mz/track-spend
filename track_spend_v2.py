@@ -7,7 +7,7 @@ import re
 
 date = sys.argv[1]
 amount = sys.argv[2]
-card = sys.argv[3]
+# card = sys.argv[3]
 tag = sys.argv[4]
 memo = sys.argv[5]
 tip = sys.argv[6]
@@ -17,8 +17,8 @@ amount = float(re.search('\$.+\.\d\d', amount).group(0)[1:]) + float(tip)
 card_dict = {"8420": "Capital One Quicksilver",
              "1311": "Capital One Savor credit",
              "9057": "Charles Schwab personal checking"}
-card = card_dict.get(re.search('\d\d\d\d', card).group(0))
-
+card = card_dict.get(re.search('\d\d\d\d', amount).group(0))
+merchant = re.search('', amount).group(0)
 
 def track_spend(date, amount, card, tag, memo):
     scope = ['https://spreadsheets.google.com/feeds',
