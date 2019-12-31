@@ -1,5 +1,3 @@
-#! /data/data/com.termux/files/usr/bin/env python3
-
 import datetime
 import ofxtools
 import re
@@ -12,6 +10,7 @@ import keyring
 
 # def schwab_report(dtstart, dtend):
 
+directory = os.path.join(os.path.dirname(os.path.abspath(__file__)),'schwab_statement.xml')
 
 dtstart = datetime.datetime(2019, 1, 1, tzinfo=ofxtools.utils.UTC)
 dtend = datetime.datetime(2019, 12, 25, tzinfo=ofxtools.utils.UTC)
@@ -35,11 +34,11 @@ def getnetworth():
         with client.request_statements(password, statement) as f:
             message = f.read()
 
-        file = open('schwab_statement.xml', 'w')
+        file = open(directory, 'w')
         file.write(message.decode())
         file.close()
 
-        tree = etree.parse('schwab_statement.xml')
+        tree = etree.parse(directory)
         root = tree.getroot()
 
         for element in root.iter():
@@ -51,5 +50,5 @@ def getnetworth():
                 cash += float(element.text)
     return networth, cash
 
-os.remove('schwab_statement.xml')
 print(getnetworth())
+os.remove(directory)
