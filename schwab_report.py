@@ -1,3 +1,5 @@
+#! /data/data/com.termux/files/usr/bin/env python3
+
 import datetime
 import ofxtools
 import re
