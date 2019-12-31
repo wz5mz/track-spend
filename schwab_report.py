@@ -5,7 +5,7 @@ import ofxtools
 import re
 import os
 from lxml import etree
-import keyring
+from keyrings.cryptfile.cryptfile import CryptFileKeyring
 
 
 # Include error handling for when signon fails - MAYBE RETURN N/A?
@@ -17,11 +17,12 @@ directory = os.path.join(os.path.dirname(os.path.abspath(__file__)),'schwab_stat
 dtstart = datetime.datetime(2019, 1, 1, tzinfo=ofxtools.utils.UTC)
 dtend = datetime.datetime(2019, 12, 25, tzinfo=ofxtools.utils.UTC)
 
-
-username = keyring.get_password('schwab', 'username')
-password = keyring.get_password('schwab', 'password')
-rothacctno = keyring.get_password('schwab', 'rothacctno')
-brokerageacctno = keyring.get_password('schwab', 'brokerageacctno')
+kr=CryptFileKeyring()
+kr.keyring_key='1234qwer'
+username = kr.get_password('schwab', 'username')
+password = kr.get_password('schwab', 'password')
+rothacctno = kr.get_password('schwab', 'rothacctno')
+brokerageacctno = kr.get_password('schwab', 'brokerageacctno')
 
 client = ofxtools.OFXClient('https://ofx.schwab.com/cgi_dev/ofx_server',
                             userid=username,
